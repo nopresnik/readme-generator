@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
+// Initalise inquirer
 inquirer
   .prompt([
     {
@@ -60,8 +61,10 @@ inquirer
     },
   ])
   .then((answers) => {
+    // Get the answers and write a file containing the return of the buildReadme func.
     fs.writeFile("output.md", buildReadme(answers), (err) => {
       if (err) {
+        // Log any errors.
         return console.log("Could not write readme: ", err);
       }
 
@@ -69,10 +72,12 @@ inquirer
     });
   })
   .catch((error) => {
+    // Log any errors.
     console.log(error);
   });
 
 const buildReadme = (answers) => {
+  // Destructure the answers object.
   const {
     title,
     description,
@@ -85,34 +90,34 @@ const buildReadme = (answers) => {
     email,
   } = answers;
 
+  // Return generated markdown using a template literal
   return `
-  ![License Badge](https://img.shields.io/badge/License-${license}-BLUE)
-  # ${title}
-  ${description}
-  ## Table Of Contents
-  1. [Installation](#Installation)
-  2. [Usage](#Usage)
-  3. [Contribution](#Contribution)
-  4. [Tests](#Tests)
-  5. [Questions](#Questions)
+![License Badge](https://img.shields.io/badge/License-${license}-BLUE)
+# ${title}
+${description}
+## Table Of Contents
+1. [Installation](#Installation)
+2. [Usage](#Usage)
+3. [Contribution](#Contribution)
+4. [Tests](#Tests)
+5. [Questions](#Questions)
 
-  ## Installation
-  ${installation}
+## Installation
+${installation}
 
-  ## Usage
-  ${usage}
+## Usage
+${usage}
 
-  ## Contribution
-  ${contribution}
+## Contribution
+${contribution}
 
-  ## Tests
-  ${test}
+## Tests
+${test}
 
-  ## Questions
-  Feel free to contact me via:
+## Questions
+Feel free to contact me via:
 
-  Email: [${email}](mailto:${email})
-  
-  GitHub: [${github}](https://github.com/${github})
-  `;
+Email: [${email}](mailto:${email})
+
+GitHub: [${github}](https://github.com/${github})`;
 };

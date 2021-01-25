@@ -9,6 +9,9 @@
   4. [Tests](#Tests)
   5. [Questions](#Questions)
 
+  ## Walkthtough Video
+  [Watch](https://drive.google.com/file/d/1eDy13o-Gz5HMUkCuo-SVntpHxuKb90G2/view)
+
   ## Installation
   npm install
 
