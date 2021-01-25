@@ -60,12 +60,12 @@ inquirer
     },
   ])
   .then((answers) => {
-    fs.writeFile("readme.md", buildReadme(answers), (err) => {
+    fs.writeFile("output.md", buildReadme(answers), (err) => {
       if (err) {
         return console.log("Could not write readme: ", err);
       }
 
-      console.log("Successfully wrote to readme.md!");
+      console.log("Successfully wrote to output.md!");
     });
   })
   .catch((error) => {
